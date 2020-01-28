@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,11 +7,14 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomPreloadingStrategy } from './custom-preloading-strategy';
+import { LoggerComponent } from './logger/logger.component';
+import { ErrorsHandler } from './error-handler';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoggerComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +22,10 @@ import { CustomPreloadingStrategy } from './custom-preloading-strategy';
     AppRoutingModule,
     OAuthModule.forRoot()
   ],
-  providers: [CustomPreloadingStrategy],
+  providers: [CustomPreloadingStrategy, {
+    provide: ErrorHandler,
+    useClass: ErrorsHandler,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

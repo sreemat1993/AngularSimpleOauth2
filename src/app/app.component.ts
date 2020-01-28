@@ -22,6 +22,8 @@ export class AppComponent {
       } else {
         this.router.navigate(['/dashboard']);
       }
+    }).catch(err => {
+      throw err;
     });
     this.oauthService.setupAutomaticSilentRefresh();
   }

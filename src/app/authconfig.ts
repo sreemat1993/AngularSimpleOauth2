@@ -7,5 +7,6 @@ export const authConfig: AuthConfig = {
     responseType: 'code',
     showDebugInformation: true,
     clientId: '6491ec1d-2b6d-4665-9999-17ead343e660',
+    dummyClientSecret:'dasda',
     scope: 'openid'
 }
